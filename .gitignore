@@ -362,12 +362,9 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-obj\project.assets.json
-
-obj/Debug/net7.0/project.razor.json
 obj/Debug/net7.0/Contact_Application.GeneratedMSBuildEditorConfig.editorconfig
 obj/Debug/net7.0/Contact_Application.assets.cache
-obj/Debug/net7.0/project.razor.json
+
 
 *.suo
 *.user
@@ -375,3 +372,11 @@ _ReSharper.*
 bin
 obj
 packages
+
+obj/Debug/net7.0/project.razor.json
+obj/Contact_Application.csproj.nuget.dgspec.json
+obj/project.assets.json
+obj/project.nuget.cache
+obj/Debug/net7.0/Contact_Application.assets.cache
+obj/Debug/net7.0/Contact_Application.GeneratedMSBuildEditorConfig.editorconfig
+obj/Debug/net7.0/project.razor.json
