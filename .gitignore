@@ -367,3 +367,11 @@ obj\project.assets.json
 obj/Debug/net7.0/project.razor.json
 obj/Debug/net7.0/Contact_Application.GeneratedMSBuildEditorConfig.editorconfig
 obj/Debug/net7.0/Contact_Application.assets.cache
+obj/Debug/net7.0/project.razor.json
+
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
