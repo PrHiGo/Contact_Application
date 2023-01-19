@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\thoma\\source\\repos\\Contact_Application\\Contact_Application\\Contact_Application.csproj": {}
+    "C:\\Users\\thoma\\Desktop\\DevbyT\\Contact_Application\\Contact_Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\thoma\\source\\repos\\Contact_Application\\Contact_Application\\Contact_Application.csproj": {
+    "C:\\Users\\thoma\\Desktop\\DevbyT\\Contact_Application\\Contact_Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\thoma\\source\\repos\\Contact_Application\\Contact_Application\\Contact_Application.csproj",
+        "projectUniqueName": "C:\\Users\\thoma\\Desktop\\DevbyT\\Contact_Application\\Contact_Application.csproj",
         "projectName": "Contact_Application",
-        "projectPath": "C:\\Users\\thoma\\source\\repos\\Contact_Application\\Contact_Application\\Contact_Application.csproj",
+        "projectPath": "C:\\Users\\thoma\\Desktop\\DevbyT\\Contact_Application\\Contact_Application.csproj",
         "packagesPath": "C:\\Users\\thoma\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\thoma\\source\\repos\\Contact_Application\\Contact_Application\\obj\\",
+        "outputPath": "C:\\Users\\thoma\\Desktop\\DevbyT\\Contact_Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\thoma\\AppData\\Roaming\\NuGet\\NuGet.Config",
