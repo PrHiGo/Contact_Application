@@ -8,6 +8,92 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
+        "HashCode": -2099217966,
+        "Kind": "Components.Component",
+        "Name": "Contact_Application.App",
+        "AssemblyName": "Contact_Application",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Contact_Application.App"
+        }
+      },
+      {
+        "HashCode": -823482936,
+        "Kind": "Components.Component",
+        "Name": "Contact_Application.App",
+        "AssemblyName": "Contact_Application",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Contact_Application.App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Contact_Application.App",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -519251356,
+        "Kind": "Components.Component",
+        "Name": "Contact_Application.Shared.SurveyPrompt",
+        "AssemblyName": "Contact_Application",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Contact_Application.Shared.SurveyPrompt"
+        }
+      },
+      {
+        "HashCode": -1134378458,
+        "Kind": "Components.Component",
+        "Name": "Contact_Application.Shared.SurveyPrompt",
+        "AssemblyName": "Contact_Application",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Contact_Application.Shared.SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Contact_Application.Shared.SurveyPrompt",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -1080306136,
         "Kind": "Components.Component",
         "Name": "Contact_Application.Shared.NavMenu",
@@ -137,59 +223,6 @@
         }
       },
       {
-        "HashCode": -519251356,
-        "Kind": "Components.Component",
-        "Name": "Contact_Application.Shared.SurveyPrompt",
-        "AssemblyName": "Contact_Application",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Contact_Application.Shared.SurveyPrompt"
-        }
-      },
-      {
-        "HashCode": -1134378458,
-        "Kind": "Components.Component",
-        "Name": "Contact_Application.Shared.SurveyPrompt",
-        "AssemblyName": "Contact_Application",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Contact_Application.Shared.SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Contact_Application.Shared.SurveyPrompt",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 546390049,
         "Kind": "Components.Component",
         "Name": "Contact_Application.Pages.Counter",
@@ -252,72 +285,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Contact_Application.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 501189216,
-        "Kind": "Components.Component",
-        "Name": "Contact_Application.Pages.FetchData",
-        "AssemblyName": "Contact_Application",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Contact_Application.Pages.FetchData"
-        }
-      },
-      {
-        "HashCode": -1864568871,
-        "Kind": "Components.Component",
-        "Name": "Contact_Application.Pages.FetchData",
-        "AssemblyName": "Contact_Application",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Contact_Application.Pages.FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Contact_Application.Pages.FetchData",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -2099217966,
-        "Kind": "Components.Component",
-        "Name": "Contact_Application.App",
-        "AssemblyName": "Contact_Application",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Contact_Application.App"
-        }
-      },
-      {
-        "HashCode": -823482936,
-        "Kind": "Components.Component",
-        "Name": "Contact_Application.App",
-        "AssemblyName": "Contact_Application",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Contact_Application.App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Contact_Application.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -13928,11 +13895,6 @@
     {
       "FilePath": "c:\\Users\\thoma\\Desktop\\DevbyT\\Contact_Application\\Shared\\SurveyPrompt.razor",
       "TargetPath": "Shared\\SurveyPrompt.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "c:\\Users\\thoma\\Desktop\\DevbyT\\Contact_Application\\Pages\\FetchData.razor",
-      "TargetPath": "Pages\\FetchData.razor",
       "FileKind": "component"
     }
   ],
