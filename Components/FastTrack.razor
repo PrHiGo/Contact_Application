@@ -1,0 +1,11 @@
+<div class="fast-track-container">
+  @foreach (var item in letters)
+  {
+    <span>@item</span>
+  }
+</div>
+
+
+@code {
+  List<string> letters = Enumerable.Range('A', 'Z' - 'A' + 1).Select(i => ((char)i).ToString()).ToList();
+}
