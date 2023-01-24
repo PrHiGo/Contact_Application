@@ -1,12 +1,20 @@
 ﻿@inherits LayoutComponentBase
 
-<div>
+<div class="header-section">
     <MenuButton />
-    <SearchBar />
-    <NavMenu />
+    @* <NavMenu /> *@
 </div>
 
+
 <main>
-    @Body
+<div class="search">
+    <SearchBar />
+</div>
+    <div class="book-container">
+        <div class="book-list-view">
+            @Body
+        </div>
+    </div>
     <FastTrack />
 </main>
+    
