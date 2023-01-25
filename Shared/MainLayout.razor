@@ -1,15 +1,18 @@
 ﻿@inherits LayoutComponentBase
 
-
-
 <main>
+
 <div class="header-section">
     <MenuButton />
-    @* <NavMenu /> *@
 </div>
+@if (MenuButton.isOpen == true) {
+ <div class="menu-container">
+ <NavMenu />
+ </div>
+}
 <div class="search">
     <SearchBar />
-</div>
+    </div>
     <div class="book-container">
         <div class="book-list-view">
             @Body
