@@ -11,26 +11,28 @@
     </ul>
 </div>
 
-
 @code {
-
-    // Känns som att något saknas här va
     private List<Contact> contacts = new() {
-        
+
             new Contact {firstName ="Kalle", lastName ="Persson", email ="mailmail", phoneNumber = 080808080},
-            new Contact {firstName ="Anders", lastName ="Andersson", email ="mailmail", phoneNumber = 080808080},
-            new Contact {firstName ="Stina", lastName ="Svensson", email ="mailmail", phoneNumber = 080808080},
+            new Contact {firstName ="Anders",lastName ="Andersson", email ="mailmail", phoneNumber = 080808080},
+            new Contact {firstName ="Stina",lastName ="Svensson", email ="mailmail", phoneNumber = 080808080},
             new Contact {firstName ="Kaj", lastName ="Bergström", email ="mailmail", phoneNumber = 080808080},
             new Contact {firstName ="Maja", lastName ="Majsson", email ="mailmail", phoneNumber = 080808080},
-
+        
         };
         
+    class Contacts {
+        public string firstName;
+        public string lastName;
+        public string email;
+        public int phoneNumber;
 
-    public class Contact 
-    {
-        public string firstName {get; set;}
-        public string lastName {get; set;}
-        public string email {get; set;}
-        public int phoneNumber {get; set;}
+        public Contacts(string firstName, string lastName, string email, int phoneNumber) {
+            firstName = firstName;
+            lastName = lastName;
+            email  = email;
+            phoneNumber = phoneNumber;  
+        }   
     };
 }
