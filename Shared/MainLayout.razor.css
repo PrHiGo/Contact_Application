@@ -1,32 +1,62 @@
 main {
-	width: 42rem;
-	display: flex;
-	flex-direction: column;
-	gap: 1.5rem;
+  width: 42rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.5rem;
 }
-
+.header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
 .search {
-	width: 100%;
-	display: flex;
-	justify-content: flex-end;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .book-container {
-	height: 30rem;
-	width: 100%;
-	border: 1px solid black;
+  height: 30rem;
+  width: 100%;
+  border: 1px solid black;
 }
 
 .book-list-view {
-	/* display: flex;
+  /* display: flex;
 	justify-content: space-between;
 	flex-direction: row; */
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
-.header-section {
-	width: 100%;
-	display: flex;
-	justify-content: flex-end;
+.button-container {
+  position: relative;
+  display: inline-block;
+}
+button {
+  width: 2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.bar1,
+.bar2,
+.bar3 {
+  width: 1.3rem;
+  height: 0.2rem;
+  border-radius: 2px;
+  background-color: black;
+}
+
+.navmenu-container {
+  margin-top: 1.6rem;
+  display: flex;
+  margin-left: auto;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  z-index: 1;
 }
