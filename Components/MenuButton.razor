@@ -1,14 +1,14 @@
-<button @onclick="OpenMenu">
+<button>
   <div class="bar1"></div>
   <div class="bar2"></div>
   <div class="bar3"></div>
 </button>
 
-@code {
-  public static bool isOpen;
+@* @code {
+  public static bool isOpen = true;
 
-  private void OpenMenu()
+  public static void OpenMenu()
   {
     isOpen = !isOpen;
   }
-}
+} *@

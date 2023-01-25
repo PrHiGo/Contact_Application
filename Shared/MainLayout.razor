@@ -1,14 +1,18 @@
 ﻿@inherits LayoutComponentBase
 
 <main>
-
 <div class="header-section">
-    <MenuButton />
+    <button @onclick="OpenMenu">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </button>
 </div>
-@if (MenuButton.isOpen == true) {
- <div class="menu-container">
- <NavMenu />
- </div>
+@if (isOpen)
+{
+    <div class="menu-container">
+        <NavMenu />
+    </div>
 }
 <div class="search">
     <SearchBar />
@@ -20,4 +24,15 @@
     </div>
  
 </main>
+
+
+@code {
+    private bool isOpen;
+
+    void OpenMenu()
+    {
+        isOpen = !isOpen;
+        StateHasChanged();
+    }
+}
     
