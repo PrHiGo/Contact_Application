@@ -1,0 +1,26 @@
+.book-container {
+	height: 30rem;
+	width: 42rem;
+	border: 1px solid black;
+}
+
+.book-list-view {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
+}
+
+.right-section {
+	background-color: rgb(225, 217, 219);
+	width: 50%;
+}
+.left-section {
+	background-color: rgb(144, 146, 150);
+	width: 50%;
+}
+
+.fast-track {
+	margin-top: 1rem;
+}
