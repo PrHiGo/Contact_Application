@@ -1,5 +1,4 @@
-namespace Contact_Application.Utilities {
-  public class MenuButton {
-    
-  }
+namespace Contact_Application.Utilities
+{
+
 }
