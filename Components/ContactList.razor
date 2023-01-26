@@ -1,38 +1,62 @@
 <div class="contact-list">
 
     <ul>
-    @foreach (var contact in contacts)
-    {
-    <li>@contact.firstName @contact.lastName</li>       
-    <li>@contact.email</li>       
-    <li>@contact.phoneNumber</li>       
-    }
+        @foreach (var contact in Contacts)
+        {
+            <li>@contact.Name @contact.LastName</li>
+            <li>@contact.Email</li>
+            <li>@contact.Number</li>
+        }
 
     </ul>
 </div>
 
 @code {
-    private List<Contact> contacts = new() {
 
-            new Contact {firstName ="Kalle", lastName ="Persson", email ="mailmail", phoneNumber = 080808080},
-            new Contact {firstName ="Anders",lastName ="Andersson", email ="mailmail", phoneNumber = 080808080},
-            new Contact {firstName ="Stina",lastName ="Svensson", email ="mailmail", phoneNumber = 080808080},
-            new Contact {firstName ="Kaj", lastName ="Bergström", email ="mailmail", phoneNumber = 080808080},
-            new Contact {firstName ="Maja", lastName ="Majsson", email ="mailmail", phoneNumber = 080808080},
-        
-        };
-        
-    class Contacts {
-        public string firstName;
-        public string lastName;
-        public string email;
-        public int phoneNumber;
-
-        public Contacts(string firstName, string lastName, string email, int phoneNumber) {
-            firstName = firstName;
-            lastName = lastName;
-            email  = email;
-            phoneNumber = phoneNumber;  
-        }   
+    public List<Contact> Contacts = new List<Contact>()
+    {
+        new Contact("Kalle", "Persson", "kalle.persson@exempel.com", 0701231122),
+        new Contact("Anders", "Andersson", "anders.andersson@exempel.com", 0701231122),
+        new Contact("Stina", "Svensson", "stina.Svensson@exempel.com", 0701231122),
+        new Contact("Kaj", "Bergström", "kaj.bergström@exempel.com", 0701231122),
+        new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
     };
+
+    public class Contact
+    {
+        private string _firstName;
+        private string _lastName;
+        private string _email;
+        private int _phoneNumber;
+
+        public string Name
+        {
+            get { return _firstName; }
+        }
+
+        public string LastName
+        {
+            get { return _lastName; }
+        }
+
+        public string Email
+        {
+            get { return _email; }
+        }
+
+        public int Number
+        {
+            get { return _phoneNumber; }
+        }
+
+        public Contact(string firstName, string lastName, string email, int phoneNumber)
+        {
+            _firstName = firstName;
+            _lastName = lastName;
+            _email = email;
+            _phoneNumber = phoneNumber;
+        }
+
+    };
+
 }
