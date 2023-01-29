@@ -1,62 +1,98 @@
 <div class="contact-list">
 
-    <ul>
-        @foreach (var contact in Contacts)
+    @foreach (var contact in Contacts)
+    {
+        <li @onclick="() => SetSelectedContact(contact.Name, contact.LastName)">@contact.Name @contact.LastName</li>
+        @if (_selectedContactName == contact.Name && _selectContactLastName == contact.LastName && IsContactOpen == true)
         {
-            <li>@contact.Name @contact.LastName</li>
-            <li>@contact.Email</li>
-            <li>@contact.Number</li>
-        }
 
-    </ul>
+            <div class="modal-content">
+                <div class="modal-title">
+                    <button @onclick="CloseCard" class="close">&times;</button>
+                    <h4> @contact.Name @contact.LastName </h4>
+                </div>
+                <div class="contact-info">
+                    <p>telefon: @contact.Number</p>
+                    <p>e-post: @contact.Email</p>
+                    <p>Vägvägen 2 <br> 432 39 Stad</p>
+                </div>
+            </div>
+
+        }
+    }
+
 </div>
 
 @code {
 
-    public List<Contact> Contacts = new List<Contact>()
+    public List<Contact> Contacts { get; set; } = new List<Contact>()
     {
         new Contact("Kalle", "Persson", "kalle.persson@exempel.com", 0701231122),
         new Contact("Anders", "Andersson", "anders.andersson@exempel.com", 0701231122),
         new Contact("Stina", "Svensson", "stina.Svensson@exempel.com", 0701231122),
         new Contact("Kaj", "Bergström", "kaj.bergström@exempel.com", 0701231122),
         new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
+
     };
 
-    public class Contact
+    private string _selectedContactName { get; set; }
+    private string _selectContactLastName { get; set; }
+    private bool IsContactOpen;
+    private void SetSelectedContact(string name, string lastname)
     {
-        private string _firstName;
-        private string _lastName;
-        private string _email;
-        private int _phoneNumber;
+        _selectedContactName = name;
+        _selectContactLastName = lastname;
+        IsContactOpen = true;
+    }
 
-        public string Name
-        {
-            get { return _firstName; }
-        }
+    private void CloseCard()
+    {
+        IsContactOpen = false;
+    }
 
-        public string LastName
-        {
-            get { return _lastName; }
-        }
+    public bool isCreatingContact;
+    public string name = "";
+    public string lastName = "";
+    public string mail = "";
+    public int number;
 
-        public string Email
-        {
-            get { return _email; }
-        }
 
-        public int Number
-        {
-            get { return _phoneNumber; }
-        }
+    bool Create
+    {
+        get { return isCreatingContact; }
+        set { isCreatingContact = value; }
+    }
 
-        public Contact(string firstName, string lastName, string email, int phoneNumber)
-        {
-            _firstName = firstName;
-            _lastName = lastName;
-            _email = email;
-            _phoneNumber = phoneNumber;
-        }
+    public string Name
+    {
+        set { name = value; }
+    }
 
-    };
+    string Lastname
+    {
+        set { lastName = value; }
+    }
 
+    string Mail
+    {
+        set { mail = value; }
+    }
+
+    int Number
+    {
+        set { number = value; }
+    }
+
+    public void NewContact()
+    {
+        isCreatingContact = true;
+    }
+
+    public void AddContact()
+    {
+        Contacts.Add(new Contact(name, lastName, mail, number));
+        isCreatingContact = false;
+        StateHasChanged();
+
+    }
 }

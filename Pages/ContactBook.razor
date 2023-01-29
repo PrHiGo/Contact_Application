@@ -1,0 +1,55 @@
+﻿@page "/"
+
+<PageTitle>Contact Application</PageTitle>
+
+<div class="book-container">
+    <div class="book-list-view">
+        <div class="left-section">
+            <ContactList />
+            <button class="prev-btn">Previous</button>
+        </div>
+        <div class="right-section">
+            <button class="next-btn">Next</button>
+        </div>
+    </div>
+    <button @onclick="NewContact">New Contact</button>
+    @if (_isCreatingContact == true)
+    {
+        <div class="new-contact">
+            <p>Name: <input @bind="_name"/></p>
+            <p>Lastname: <input @bind="_lastName" /></p>
+            <p>Mail: <input @bind="_mail" /></p>
+            <p>Number: <input @bind="_number" /></p>
+            
+            <button @onclick="() => { _isCreatingContact = false; }">Close</button>
+            <button @onclick="AddContact">Add</button>
+        </div>
+    }
+</div>
+<div class="fast-track">
+    <FastTrack />
+</div>
+
+@code
+{
+    private bool _isCreatingContact;
+    private string _name = "";
+    private string _lastName = "";
+    private string _mail = "";
+    private int _number;
+
+
+
+    public void NewContact()
+    {
+        _isCreatingContact = true;
+    }
+
+    public void AddContact()
+    {
+        ContactList.Contacts.Add(new Contact(_name, _lastName, _mail, _number));
+        _isCreatingContact = false;
+        StateHasChanged();
+
+    }
+}
