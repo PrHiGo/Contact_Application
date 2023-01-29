@@ -25,7 +25,7 @@
 
 @code {
 
-    public List<Contact> Contacts { get; set; } = new List<Contact>()
+    public static List<Contact> Contacts { get; set; } = new List<Contact>()
     {
         new Contact("Kalle", "Persson", "kalle.persson@exempel.com", 0701231122),
         new Contact("Anders", "Andersson", "anders.andersson@exempel.com", 0701231122),
@@ -48,51 +48,5 @@
     private void CloseCard()
     {
         IsContactOpen = false;
-    }
-
-    public bool isCreatingContact;
-    public string name = "";
-    public string lastName = "";
-    public string mail = "";
-    public int number;
-
-
-    bool Create
-    {
-        get { return isCreatingContact; }
-        set { isCreatingContact = value; }
-    }
-
-        public string Name
-        {
-            get { return _firstName; }
-        }
-
-    string Lastname
-    {
-        set { lastName = value; }
-    }
-
-    string Mail
-    {
-        set { mail = value; }
-    }
-
-    int Number
-    {
-        set { number = value; }
-    }
-
-    public void NewContact()
-    {
-        isCreatingContact = true;
-    }
-
-    public void AddContact()
-    {
-        Contacts.Add(new Contact(name, lastName, mail, number));
-        isCreatingContact = false;
-        StateHasChanged();
-
     }
 }
