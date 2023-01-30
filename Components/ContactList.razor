@@ -1,17 +1,37 @@
 <div class="contact-list">
 
-    <ul>
-        @foreach (var contact in Contacts)
-        {
-            <li>@contact.Name @contact.LastName</li>
-            <li>@contact.Email</li>
-            <li>@contact.Number</li>
-        }
 
-    </ul>
+    @foreach (var contact in Contacts)
+    {
+        <li @onclick="() => setSelectedContact(contact.Name)">@contact.Name @contact.LastName</li>
+            @if (_isContactOpen == true && selectedContact == contact.Name)
+        {
+                <div class="modal-content">
+                    <div class="modal-title">
+        <button class="close" @onclick = "() => _isContactOpen = false">&times;</button>
+            <h4>@contact.Name @contact.LastName</h4>
+        </div>
+        <div class="contact-info">
+            <p>@contact.Number</p>
+            <p>Vägvägen 2 <br> 432 39 Stad</p>
+        </div>
+    </div>
+        }
+    }
+
 </div>
 
 @code {
+
+
+    private bool _isContactOpen;
+    private string selectedContact { get; set; }
+
+    private void setSelectedContact(string Name)
+    {
+        _isContactOpen = true;
+        selectedContact = Name;
+    }
 
     public static List<Contact> Contacts = new List<Contact>()
     {
@@ -22,45 +42,9 @@
         new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
     };
 
-    public class Contact
-    {
-        private string _firstName;
-        private string _lastName;
-        private string _email;
-        private int _phoneNumber;
+    private bool _isShowingContactInfo;
 
-        public string Name
-        {
-            get { return _firstName; }
-            set { _firstName = value;}
-        }
-
-        public string LastName
-        {
-            get { return _lastName; }
-            set { _lastName = value; }
-        }
-
-        public string Email
-        {
-            get { return _email; }
-            set { _email = value; }
-        }
-
-        public int Number
-        {
-            get { return _phoneNumber; }
-            set { _phoneNumber = value; }
-        }
-
-        public Contact(string firstName, string lastName, string email, int phoneNumber)
-        {
-            _firstName = firstName;
-            _lastName = lastName;
-            _email = email;
-            _phoneNumber = phoneNumber;
-        }
-
-    };
-
+    private void OpenContactInfo(){
+        _isShowingContactInfo = true;
+    }
 }

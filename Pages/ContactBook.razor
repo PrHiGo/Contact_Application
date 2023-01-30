@@ -47,7 +47,7 @@
 
     public void AddContact()
     {
-        ContactList.Contacts.Add(new ContactList.Contact(_name, _lastName, _mail, _number));
+        ContactList.Contacts.Add(new Contact(_name, _lastName, _mail, _number));
         _isCreatingContact = false;
         StateHasChanged();
 
