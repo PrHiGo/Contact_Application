@@ -9,6 +9,7 @@
 <div class="book-container">
 	<div class="book-list-view">
 		<div class="contact-list">
+				
 			@foreach (var contact in Contacts)
 			{
 				if ((string.IsNullOrEmpty(SearchTerm) || contact.Name.Contains(SearchTerm) || contact.LastName.Contains(SearchTerm)))
@@ -81,6 +82,17 @@
 		new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
 	};
 
+	private void SortContacts()
+	{
+		Contacts = Contacts.OrderBy(x => x.Name).ToList();
+	}
+
+	protected override void OnInitialized()
+	{
+		SortContacts();
+		base.OnInitialized();
+	}
+
 	private void setSelectedContact(string Name, string LastName)
 	{
 		_isShowingContactInfo = true;
@@ -97,6 +109,6 @@
 	{
 		Contacts.Add(new Contact(_name, _lastName, _mail, _number));
 		_isCreatingContact = false;
-		StateHasChanged();
+		OnInitialized();
 	}
 }
