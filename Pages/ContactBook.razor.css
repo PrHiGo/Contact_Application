@@ -52,17 +52,35 @@ li {
     border: 1px solid black;
 }
 
-.modal-content {
-    flex-direction: column;
-}
-
-.close {
-    border: none;
-    cursor: pointer;
-    background-color: white;
-    font-size: 30px;
-}
 .name {
     display: flex;
     flex-direction: column;
+}
+
+/*Search Bar*/
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    width: 10rem;
+    height: 1.5rem;
+    border-style: none;
+    border: 1px solid black;
+    border-right: 0;
+}
+
+.search-icon {
+    display: flex;
+    align-items: center;
+}
+
+img {
+    width: auto;
+    height: 1.62rem;
+    border: 1px solid black;
+    border-left: 0;
 }

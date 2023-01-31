@@ -3,7 +3,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 1.5rem;
+    gap: 1rem;
+    margin-top: 5rem;
 }
 
 .header-section {
@@ -19,18 +20,13 @@ main {
 }
 
 .book-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     height: 30rem;
     width: 100%;
-    border: 1px solid black;
 }
 
-.book-list-view {
-    /* display: flex;
-	justify-content: space-between;
-	flex-direction: row; */
-    width: 100%;
-    height: 100%;
-}
 
 .button-container {
     position: relative;

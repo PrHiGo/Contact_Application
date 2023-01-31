@@ -1,26 +1,33 @@
 ﻿@page "/";
-
 <PageTitle>Contact Application</PageTitle>
+
+<div class="search-bar">
+	<input type="text" @bind-value="SearchTerm" @bind-value:event="oninput" placeholder="Search Contact..." />
+	<img src="images/search-icon.png" alt="search icon" />
+</div>
 
 <div class="book-container">
 	<div class="book-list-view">
 		<div class="contact-list">
 			@foreach (var contact in Contacts)
 			{
-				<li @onclick="() => setSelectedContact(contact.Name, contact.LastName)">@contact.Name @contact.LastName</li>
-				@if (_isShowingContactInfo == true && selectedContact == contact.Name && selectedContact2 == contact.LastName)
+				if ((string.IsNullOrEmpty(SearchTerm) || contact.Name.Contains(SearchTerm) || contact.LastName.Contains(SearchTerm)))
 				{
-					<div class="modal-content">
-						<div class="modal-title">
-							<button class="close" @onclick="() => _isShowingContactInfo = false">&times;</button>
-							<h4>@contact.Name @contact.LastName</h4>
+					<li @onclick="() => setSelectedContact(contact.Name, contact.LastName)">@contact.Name @contact.LastName</li>
+					@if (_isShowingContactInfo == true && selectedContact == contact.Name && selectedContact2 == contact.LastName)
+					{
+						<div class="modal-content">
+							<div class="modal-title">
+								<button class="close" @onclick="() => _isShowingContactInfo = false">&times;</button>
+								<h4>@contact.Name @contact.LastName</h4>
+							</div>
+							<div class="contact-info">
+								<p>@contact.Email</p>
+								<p>@contact.Number</p>
+								<p>Vägvägen 2 <br> 432 39 Stad</p>
+							</div>
 						</div>
-						<div class="contact-info">
-							<p>@contact.Email</p>
-							<p>@contact.Number</p>
-							<p>Vägvägen 2 <br> 432 39 Stad</p>
-						</div>
-					</div>
+					}
 				}
 			}
 
@@ -52,9 +59,9 @@
 
 <button @onclick="NewContact">New Contact</button>
 
-
 @code
-{
+{	
+	public static string SearchTerm { get; set; } = "";
 	private bool _isShowingContactInfo;
 	private string selectedContact { get; set; } = "";
 	private string selectedContact2 { get; set; } = "";
@@ -63,6 +70,7 @@
 	private string _lastName = "";
 	private string _mail = "";
 	private int _number;
+
 
 	public List<Contact> Contacts = new List<Contact>()
 	{
