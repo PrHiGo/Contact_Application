@@ -3,12 +3,12 @@
 
     @foreach (var contact in Contacts)
     {
-        <li @onclick="() => setSelectedContact(contact.Name)">@contact.Name @contact.LastName</li>
-            @if (_isContactOpen == true && selectedContact == contact.Name)
+        <li @onclick="() => setSelectedContact(contact.Name, contact.LastName)">@contact.Name @contact.LastName</li>
+            @if (_isShowingContactInfo == true && selectedContact == contact.Name && selectedContact2 == contact.LastName)
         {
                 <div class="modal-content">
                     <div class="modal-title">
-        <button class="close" @onclick = "() => _isContactOpen = false">&times;</button>
+        <button class="close" @onclick = "() => _isShowingContactInfo = false">&times;</button>
             <h4>@contact.Name @contact.LastName</h4>
         </div>
         <div class="contact-info">
@@ -23,14 +23,17 @@
 
 @code {
 
+    private bool _isShowingContactInfo;
+    private string selectedContact { get; set; } = "";
+    private string selectedContact2 { get; set; } = "";
 
-    private bool _isContactOpen;
-    private string selectedContact { get; set; }
 
-    private void setSelectedContact(string Name)
+    private void setSelectedContact(string Name, string LastName)
     {
-        _isContactOpen = true;
+        _isShowingContactInfo = true;
         selectedContact = Name;
+        selectedContact2 = LastName;
+
     }
 
     public static List<Contact> Contacts = new List<Contact>()
@@ -41,10 +44,4 @@
         new Contact("Kaj", "Bergström", "kaj.bergström@exempel.com", 0701231122),
         new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
     };
-
-    private bool _isShowingContactInfo;
-
-    private void OpenContactInfo(){
-        _isShowingContactInfo = true;
-    }
 }
