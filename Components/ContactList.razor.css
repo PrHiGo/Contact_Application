@@ -1,0 +1,38 @@
+﻿li {
+  cursor: pointer;
+  list-style: none;
+}
+
+.modal-content {
+  width: 20rem;
+  display: flex;
+  border: 1px solid black;
+  flex-direction: column;
+  background-color: white;
+}
+
+.close {
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  font-size: 30px;
+}
+
+.modal {
+  height: 12rem;
+  width: 16rem;
+  display: flex;
+  align-items: Center;
+  border: 1px solid black;
+}
+
+.modal-content {
+  flex-direction: column;
+}
+
+.close {
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  font-size: 30px;
+}

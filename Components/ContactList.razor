@@ -1,19 +1,42 @@
 <div class="contact-list">
 
-    <ul>
-        @foreach (var contact in Contacts)
-        {
-            <li>@contact.Name @contact.LastName</li>
-            <li>@contact.Email</li>
-            <li>@contact.Number</li>
-        }
 
-    </ul>
+    @foreach (var contact in Contacts)
+    {
+        <li @onclick="() => setSelectedContact(contact.Name, contact.LastName)">@contact.Name @contact.LastName</li>
+            @if (_isShowingContactInfo == true && selectedContact == contact.Name && selectedContact2 == contact.LastName)
+        {
+                <div class="modal-content">
+                    <div class="modal-title">
+        <button class="close" @onclick = "() => _isShowingContactInfo = false">&times;</button>
+            <h4>@contact.Name @contact.LastName</h4>
+        </div>
+        <div class="contact-info">
+            <p>@contact.Number</p>
+            <p>Vägvägen 2 <br> 432 39 Stad</p>
+        </div>
+    </div>
+        }
+    }
+
 </div>
 
 @code {
 
-    public List<Contact> Contacts = new List<Contact>()
+    private bool _isShowingContactInfo;
+    private string selectedContact { get; set; } = "";
+    private string selectedContact2 { get; set; } = "";
+
+
+    private void setSelectedContact(string Name, string LastName)
+    {
+        _isShowingContactInfo = true;
+        selectedContact = Name;
+        selectedContact2 = LastName;
+
+    }
+
+    public static List<Contact> Contacts = new List<Contact>()
     {
         new Contact("Kalle", "Persson", "kalle.persson@exempel.com", 0701231122),
         new Contact("Anders", "Andersson", "anders.andersson@exempel.com", 0701231122),
@@ -21,46 +44,4 @@
         new Contact("Kaj", "Bergström", "kaj.bergström@exempel.com", 0701231122),
         new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
     };
-
-    public class Contact
-    {
-        private string _firstName;
-        private string _lastName;
-        private string _email;
-        private int _phoneNumber;
-
-        public string Name
-        {
-            get { return _firstName; }
-            set { _firstName = value;}
-        }
-
-        public string LastName
-        {
-            get { return _lastName; }
-            set { _lastName = value; }
-        }
-
-        public string Email
-        {
-            get { return _email; }
-            set { _email = value; }
-        }
-
-        public int Number
-        {
-            get { return _phoneNumber; }
-            set { phoneNumber = value; }
-        }
-
-        public Contact(string firstName, string lastName, string email, int phoneNumber)
-        {
-            _firstName = firstName;
-            _lastName = lastName;
-            _email = email;
-            _phoneNumber = phoneNumber;
-        }
-
-    };
-
 }
