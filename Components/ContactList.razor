@@ -1,6 +1,4 @@
 <div class="contact-list">
-
-
     @foreach (var contact in Contacts)
     {
         <li @onclick="() => setSelectedContact(contact.Name, contact.LastName)">@contact.Name @contact.LastName</li>
@@ -17,26 +15,35 @@
         </div>
     </div>
         }
-    }
 
+    }
+    @if (_isCreatingContact == true)
+    {
+        <div class="new-contact">
+            <p>Name: <input @bind="_name"/></p>
+            <p>Lastname: <input @bind="_lastName" /></p>
+            <p>Mail: <input @bind="_mail" /></p>
+            <p>Number: <input @bind="_number" /></p>
+            
+            <button @onclick="() => { _isCreatingContact = false; }">Close</button>
+            <button @onclick="AddContact">Add</button>
+        </div>
+    }
 </div>
+<button @onclick="NewContact">New Contact</button>
 
 @code {
 
     private bool _isShowingContactInfo;
     private string selectedContact { get; set; } = "";
     private string selectedContact2 { get; set; } = "";
+    private bool _isCreatingContact;
+    private string _name = "";
+    private string _lastName = "";
+    private string _mail = "";
+    private int _number;
 
-
-    private void setSelectedContact(string Name, string LastName)
-    {
-        _isShowingContactInfo = true;
-        selectedContact = Name;
-        selectedContact2 = LastName;
-
-    }
-
-    public static List<Contact> Contacts = new List<Contact>()
+    public List<Contact> Contacts = new List<Contact>()
     {
         new Contact("Kalle", "Persson", "kalle.persson@exempel.com", 0701231122),
         new Contact("Anders", "Andersson", "anders.andersson@exempel.com", 0701231122),
@@ -44,4 +51,23 @@
         new Contact("Kaj", "Bergström", "kaj.bergström@exempel.com", 0701231122),
         new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
     };
+
+    private void setSelectedContact(string Name, string LastName)
+    {
+        _isShowingContactInfo = true;
+        selectedContact = Name;
+        selectedContact2 = LastName;
+    }
+
+    public void NewContact()
+    {
+        _isCreatingContact = true;
+    }   
+
+    public void AddContact()
+    {
+        Contacts.Add(new Contact(_name, _lastName, _mail, _number));
+        _isCreatingContact = false;
+        StateHasChanged();
+    }
 }

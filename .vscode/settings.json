@@ -4,5 +4,5 @@
   "csharp.showOmnisharpLogOnError": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "csharp.inlayHints.parameters.enabled": true,
-  "omnisharp.useEditorFormattingSettings": false
+  "omnisharp.useEditorFormattingSettings": true
 }
