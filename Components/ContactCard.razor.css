@@ -1,17 +1,16 @@
 .modal {
   height: 12rem;
-  width: 16rem;
-  display: flex;
-  align-items: Center;
-  border: 1px solid black;
-}
-
-.modal-content {
   width: 20rem;
   display: flex;
   border: 1px solid black;
-  flex-direction: column;
   background-color: white;
+}
+
+.modal-content {
+  height: 12rem;
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .close {

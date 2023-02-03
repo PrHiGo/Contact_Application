@@ -4,6 +4,9 @@
 
 @foreach (var contact in Contacts)
 {
+	@* @if ((string.IsNullOrEmpty(SearchTerm) || contact.Name.Contains(SearchTerm) || contact.LastName.Contains(SearchTerm)))
+	{
+	} *@
 	<li @onclick="() => setSelectedContact(contact.Name, contact.LastName)">@contact.Name @contact.LastName</li>
 	@if (_isShowingContactInfo == true && selectedContact == contact.Name && selectedContact2 == contact.LastName)
 	{
@@ -14,7 +17,6 @@
 					<h4>@contact.Name @contact.LastName</h4>
 				</div>
 				<div class="contact-info">
-					<p>@contact.Email</p>
 					<p>@contact.Number</p>
 					<p>Vägvägen 2 <br> 432 39 Stad</p>
 				</div>
@@ -90,7 +92,7 @@
 
 	[Parameter]
 	public List<Contact>? Contacts { get; set; }
-
+	
 	private bool _isShowingContactInfo;
 	private string selectedContact { get; set; } = "";
 	private string selectedContact2 { get; set; } = "";

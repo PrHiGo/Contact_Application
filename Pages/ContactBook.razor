@@ -9,12 +9,7 @@
 <div class="book-container">
 	<div class="book-list-view">
 		<div class="contact-list">
-				
-				@* @if ((string.IsNullOrEmpty(SearchTerm) || Contacts.Name.Contains(SearchTerm) || contact.LastName.Contains(SearchTerm)))
-				{
-				} *@
 				<ContactCard Contacts = "Contacts" />
-
 			@if (_isCreatingContact == true)
 			{
 				<div class="modal-content">
@@ -46,9 +41,7 @@
 @code
 {	
 	public static string SearchTerm { get; set; } = "";
-	@* private bool _isShowingContactInfo;
-	private string selectedContact { get; set; } = "";
-	private string selectedContact2 { get; set; } = ""; *@
+
 	private bool _isCreatingContact;
 	private string _name = "";
 	private string _lastName = "";
