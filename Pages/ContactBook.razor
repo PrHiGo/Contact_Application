@@ -10,27 +10,10 @@
 	<div class="book-list-view">
 		<div class="contact-list">
 				
-			@foreach (var contact in Contacts)
-			{
-				if ((string.IsNullOrEmpty(SearchTerm) || contact.Name.Contains(SearchTerm) || contact.LastName.Contains(SearchTerm)))
+				@* @if ((string.IsNullOrEmpty(SearchTerm) || Contacts.Name.Contains(SearchTerm) || contact.LastName.Contains(SearchTerm)))
 				{
-					<li @onclick="() => setSelectedContact(contact.Name, contact.LastName)">@contact.Name @contact.LastName</li>
-					@if (_isShowingContactInfo == true && selectedContact == contact.Name && selectedContact2 == contact.LastName)
-					{
-						<div class="modal-content">
-							<div class="modal-title">
-								<button class="close" @onclick="() => _isShowingContactInfo = false">&times;</button>
-								<h4>@contact.Name @contact.LastName</h4>
-							</div>
-							<div class="contact-info">
-								<p>@contact.Email</p>
-								<p>@contact.Number</p>
-								<p>Vägvägen 2 <br> 432 39 Stad</p>
-							</div>
-						</div>
-					}
-				}
-			}
+				} *@
+				<ContactCard Contacts = "Contacts" />
 
 			@if (_isCreatingContact == true)
 			{
@@ -63,9 +46,9 @@
 @code
 {	
 	public static string SearchTerm { get; set; } = "";
-	private bool _isShowingContactInfo;
+	@* private bool _isShowingContactInfo;
 	private string selectedContact { get; set; } = "";
-	private string selectedContact2 { get; set; } = "";
+	private string selectedContact2 { get; set; } = ""; *@
 	private bool _isCreatingContact;
 	private string _name = "";
 	private string _lastName = "";
@@ -91,13 +74,6 @@
 	{
 		SortContacts();
 		base.OnInitialized();
-	}
-
-	private void setSelectedContact(string Name, string LastName)
-	{
-		_isShowingContactInfo = true;
-		selectedContact = Name;
-		selectedContact2 = LastName;
 	}
 
 	public void NewContact()

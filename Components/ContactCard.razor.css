@@ -1,18 +1,26 @@
 .modal {
-	height: 12rem;
-	width: 16rem;
-	display: flex;
-	align-items: Center;
-	border: 1px solid black;
+  height: 12rem;
+  width: 16rem;
+  display: flex;
+  align-items: Center;
+  border: 1px solid black;
 }
 
 .modal-content {
-	flex-direction: column;
+  width: 20rem;
+  display: flex;
+  border: 1px solid black;
+  flex-direction: column;
+  background-color: white;
 }
 
 .close {
-	border: none;
-	cursor: pointer;
-	background-color: white;
-	font-size: 30px;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  font-size: 30px;
+}
+li {
+  cursor: pointer;
+  list-style: none;
 }

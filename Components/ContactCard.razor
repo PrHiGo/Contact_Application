@@ -1,19 +1,41 @@
 @page "/contactcard";
 
-<div class="modal">
-    <div class="modal-content">
-        <div class="modal-title">
-        <button class="close">&times;</button>
-            <h4>Namn Efternamn</h4>
+
+@foreach (var contact in Contacts)
+{    
+    <li @onclick="() => setSelectedContact(contact.Name, contact.LastName)">@contact.Name @contact.LastName</li>
+	@if (_isShowingContactInfo == true && selectedContact == contact.Name && selectedContact2 == contact.LastName)
+	{
+        <div class="modal">
+            <div class="modal-content">
+                <div class="modal-title">
+                <button class="close" @onclick = "() => _isShowingContactInfo = false">&times;</button>
+                    <h4>@contact.Name @contact.LastName</h4>
+                </div>
+                <div class="contact-info">
+                        <p>@contact.Email</p>
+                    <p>@contact.Number</p>
+                    <p>Vägvägen 2 <br> 432 39 Stad</p>
+                </div>
+            </div>
         </div>
-        <div class="contact-info">
-            <p>0700000000</p>
-            <p>Vägvägen 2 <br> 432 39 Stad</p>
-        </div>
-    </div>
-</div>
+	}
+}
 
 
 @code {
+    [Parameter]
+    public List<Contact> Contacts { get; set; }
 
+    	private bool _isShowingContactInfo;
+	private string selectedContact { get; set; } = "";
+	private string selectedContact2 { get; set; } = "";
+
+    
+	private void setSelectedContact(string Name, string LastName)
+	{
+		_isShowingContactInfo = true;
+		selectedContact = Name;
+		selectedContact2 = LastName;
+	}
 }

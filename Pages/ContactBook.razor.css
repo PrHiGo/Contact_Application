@@ -1,86 +1,58 @@
 .book-container {
-    height: 30rem;
-    width: 100%;
-    border: 1px solid black;
+  height: 30rem;
+  width: 100%;
+  border: 1px solid black;
 }
 
 .book-list-view {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(144, 146, 150);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(144, 146, 150);
 }
 
 .new-contact {
-    display: flex;
-    flex-direction: column;
-    margin-top: 3rem;
-    border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  border: 2px solid black;
 }
 
 .contact-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-li {
-    cursor: pointer;
-    list-style: none;
-}
-
-.modal-content {
-    width: 20rem;
-    display: flex;
-    border: 1px solid black;
-    flex-direction: column;
-    background-color: white;
-}
-
-.close {
-    border: none;
-    cursor: pointer;
-    background-color: white;
-    font-size: 30px;
-}
-
-.modal {
-    height: 12rem;
-    width: 16rem;
-    display: flex;
-    align-items: Center;
-    border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .name {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 /*Search Bar*/
 
 .search-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input {
-    width: 10rem;
-    height: 1.5rem;
-    border-style: none;
-    border: 1px solid black;
-    border-right: 0;
+  width: 10rem;
+  height: 1.5rem;
+  border-style: none;
+  border: 1px solid black;
+  border-right: 0;
 }
 
 .search-icon {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 img {
-    width: auto;
-    height: 1.62rem;
-    border: 1px solid black;
-    border-left: 0;
+  width: auto;
+  height: 1.62rem;
+  border: 1px solid black;
+  border-left: 0;
 }
