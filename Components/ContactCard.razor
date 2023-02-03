@@ -3,88 +3,99 @@
 
 
 @foreach (var contact in Contacts)
-{    
-    <li @onclick="() => setSelectedContact(contact.Name, contact.LastName)">@contact.Name @contact.LastName</li>
+{
+	<li @onclick="() => setSelectedContact(contact.Name, contact.LastName)">@contact.Name @contact.LastName</li>
 	@if (_isShowingContactInfo == true && selectedContact == contact.Name && selectedContact2 == contact.LastName)
 	{
-        <div class="modal">
-            <div class="modal-content">
-                <div class="modal-title">
-                <button class="close" @onclick = "() => _isShowingContactInfo = false">&times;</button>
-                    <h4>@contact.Name @contact.LastName</h4>
-                </div>
-                <div class="contact-info">
-                        <p>@contact.Email</p>
-                    <p>@contact.Number</p>
-                    <p>Vägvägen 2 <br> 432 39 Stad</p>
-                </div>
-            </div>
-        <button @onclick="() => _isEditingContact = true"> 
-        <img src="images/pencil-icon.png" alt="edit-icon" class="icon" />
-        </button>
-@if (_isEditingContact == true)
-{
-        <div class="modal-title">
-            <h4>@Name<input /></h4>
-            <h4>@LastName<input /></h4> 
-        </div>
+		<div class="modal">
+			<div class="modal-content">
+				<div class="modal-title">
+					<button class="close" @onclick="() => _isShowingContactInfo = false">&times;</button>
+					<h4>@contact.Name @contact.LastName</h4>
+				</div>
+				<div class="contact-info">
+					<p>@contact.Email</p>
+					<p>@contact.Number</p>
+					<p>Vägvägen 2 <br> 432 39 Stad</p>
+				</div>
+			</div>
+			<button @onclick="() => _isEditingContact = true">
+				<img src="images/pencil-icon.png" alt="edit-icon" class="icon" />
+			</button>
+			@if (_isEditingContact == true)
+			{
+				<div class="modal-title">
+					<h4>@Name<input /></h4>
+					<h4>@LastName<input /></h4>
+				</div>
 
-        <div class="contact-info">
-            <p>@Email<input /></p>
-            <p>@Number<input /></p>
-    
-        </div>
-        <div class="icons">
-            @* @if(this.EnableDelete) {
-                <button @onclick="@Delete">
-            <img src="images/remove-icon.png" alt="remove-icon" class="icon" />
-                </button>
-            } *@
-        <img src="images/favorite-icon.png" alt="favorites-icon" class="icon"/>
-        <button @onclick="Update">Save</button>
-        </div>
-} 
-        </div>
+				<div class="contact-info">
+					<p>@Email<input /></p>
+					<p>@Number<input /></p>
+
+				</div>
+				<div class="icons">
+					@if (this.EnableDelete)
+					{
+						<button @onclick="@Delete">
+							<img src="images/remove-icon.png" alt="remove-icon" class="icon" />
+						</button>
+					}
+					<img src="images/favorite-icon.png" alt="favorites-icon" class="icon" />
+					<button @onclick="Update">Save</button>
+				</div>
+			}
+		</div>
 	}
 }
-    
+
 
 @code {
 
-    public bool _isEditingContact;
-    public bool EnableDelete {get; set;}
-    @* public Action Delete {get; set;} *@
+	public bool _isEditingContact;
+	public bool EnableDelete { get; set; }
+	@* public Action Delete {get; set;} *@
 
-    public string Name { get; set; } = "";
-    public string LastName { get; set; } = "";
-    public string Email { get; set; } = "";
-    public int Number { get; set; }
+	public string Name { get; set; } = "";
+	public string LastName { get; set; } = "";
+	public string Email { get; set; } = "";
+	public int Number { get; set; }
 
-    @* private string _name = "";
+	@* private string _name = "";
     private string _lastName = "";
     private string _mail = "";
     private int _number; *@
 
-    public void EditContact(string name, string lastName, string mail, int number)
-    {
-        _isEditingContact = true;
-    }
+	public void EditContact(string name, string lastName, string mail, int number)
+	{
+		_isEditingContact = true;
+	}
 
-    public void Update()
-    {
-        @* ContactBook.Contacts.Add(new Contact(Name, LastName, Email, Number)); *@
-        _isEditingContact = false;
-        StateHasChanged();
-    }
+	public void Update()
+	{
+		@* ContactBook.Contacts.Add(new Contact(Name, LastName, Email, Number)); *@
+		_isEditingContact = false;
+		StateHasChanged();
+	}
 
-    [Parameter]
-    public List<Contact>? Contacts { get; set; }
+	public void Delete()
+	{
+		foreach (var contact in Contacts)
+		{
+			Contacts.Remove(contact);
+			StateHasChanged();
+			break;
+		}
+	}
 
-    private bool _isShowingContactInfo;
+	[Parameter]
+	public List<Contact>? Contacts { get; set; }
+
+	private bool _isShowingContactInfo;
 	private string selectedContact { get; set; } = "";
 	private string selectedContact2 { get; set; } = "";
 
-    
+
 	private void setSelectedContact(string Name, string LastName)
 	{
 		_isShowingContactInfo = true;
