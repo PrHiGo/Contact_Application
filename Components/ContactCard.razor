@@ -14,7 +14,7 @@
 			<div class="modal-content">
 				<div class="modal-title">
 					<button class="close" @onclick="() => _isShowingContactInfo = false">&times;</button>
-					<h4>@contact.Name @contact.LastName</h4>
+					<h4>@contact.Name @contact.LastName </h4>
 				</div>
 				<div class="contact-info">
 					<p>@contact.Number</p>
@@ -37,12 +37,9 @@
 
 				</div>
 				<div class="icons">
-					@if (this.EnableDelete)
-					{
-						<button @onclick="@Delete">
-							<img src="images/remove-icon.png" alt="remove-icon" class="icon" />
-						</button>
-					}
+					<button @onclick="@Delete">
+						<img src="images/remove-icon.png" alt="remove-icon" class="icon" />
+					</button>
 					<img src="images/favorite-icon.png" alt="favorites-icon" class="icon" />
 					<button @onclick="Update">Save</button>
 				</div>
@@ -51,8 +48,9 @@
 	}
 }
 
-
 @code {
+
+	
 
 	public bool _isEditingContact;
 	public bool EnableDelete { get; set; }
@@ -91,7 +89,7 @@
 	}
 
 	[Parameter]
-	public List<Contact>? Contacts { get; set; }
+	public List<Contact> Contacts { get; set; } = new List<Contact>();
 	
 	private bool _isShowingContactInfo;
 	private string selectedContact { get; set; } = "";
