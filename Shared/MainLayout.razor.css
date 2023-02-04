@@ -1,67 +1,67 @@
 main {
-	width: 20rem;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-	gap: 1rem;
-	margin-top: 5rem;
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-top: 5rem;
 }
 
 .header-section {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .search {
-	width: 100%;
-	display: flex;
-	justify-content: flex-end;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .book-container {
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	height: 30rem;
-	width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 30rem;
+  width: 100%;
 }
 
 .button-container {
-	position: relative;
-	display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 button {
-	width: 2rem;
-	cursor: pointer;
-	display: flex;
-	justify-content: flex-end;
-	flex-direction: column;
-	gap: 0.3rem;
-	background-color: white;
-	border: none;
+  width: 2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  gap: 0.3rem;
+  background-color: white;
+  border: none;
 }
 
 .bar1,
 .bar2,
 .bar3 {
-	width: 1.3rem;
-	height: 0.2rem;
-	border-radius: 2px;
-	background-color: black;
-	box-shadow: 1px 1px 2px rgb(88, 88, 88);
+  width: 1.3rem;
+  height: 0.2rem;
+  border-radius: 2px;
+  background-color: black;
+  box-shadow: 1px 1px 2px rgb(88, 88, 88);
 }
 
 .navmenu-container {
-	margin-top: 1.6rem;
-	display: flex;
-	margin-left: auto;
-	position: absolute;
-	/* background-color: #f9f9f9; */
-	background-color: rgba(249, 249, 249, 0.943);
-	min-width: 160px;
-	z-index: 1;
-	border-radius: 5px;
-	box-shadow: 0 3px 10px rgba(123, 122, 122, 0.2);
+  margin-top: 1.6rem;
+  display: flex;
+  margin-left: auto;
+  position: absolute;
+  /* background-color: #f9f9f9; */
+  background-color: rgba(249, 249, 249, 0.943);
+  min-width: 160px;
+  z-index: 1;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgba(123, 122, 122, 0.2);
 }
