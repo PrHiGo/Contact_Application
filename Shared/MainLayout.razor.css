@@ -13,11 +13,11 @@ main {
     align-items: flex-end;
 }
 
-.search {
+/*.search {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-}
+}*/
 
 .book-container {
     display: flex;

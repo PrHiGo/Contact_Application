@@ -4,10 +4,10 @@
 
 @foreach (var contact in Contacts)
 {
-	@* @if ((string.IsNullOrEmpty(SearchTerm) || contact.Name.Contains(SearchTerm) || contact.LastName.Contains(SearchTerm)))
+	@if ((string.IsNullOrEmpty(SearchTerm) || contact.Name.Contains(SearchTerm) || contact.LastName.Contains(SearchTerm)))
 	{
-	} *@
 	<li @onclick="() => setSelectedContact(contact.Name, contact.LastName)">@contact.Name @contact.LastName</li>
+	} 
 	@if (_isShowingContactInfo == true && selectedContact == contact.Name && selectedContact2 == contact.LastName)
 	{
 		<div class="modal">
@@ -50,21 +50,15 @@
 
 @code {
 
-	
-
+	[Parameter] 
+	public string? SearchTerm { get; set; }
 	public bool _isEditingContact;
 	public bool EnableDelete { get; set; }
-	@* public Action Delete {get; set;} *@
 
 	public string Name { get; set; } = "";
 	public string LastName { get; set; } = "";
 	public string Email { get; set; } = "";
 	public int Number { get; set; }
-
-	@* private string _name = "";
-    private string _lastName = "";
-    private string _mail = "";
-    private int _number; *@
 
 	public void EditContact(string name, string lastName, string mail, int number)
 	{

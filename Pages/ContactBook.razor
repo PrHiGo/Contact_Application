@@ -1,15 +1,11 @@
 ﻿@page "/";
 <PageTitle>Contact Application</PageTitle>
 
-<div class="search-bar">
-	<input type="text" @bind-value="SearchTerm" @bind-value:event="oninput" placeholder="Search Contact..." />
-	<img src="images/search-icon.png" alt="search icon" />
-</div>
-
+<SearchBar SearchContact="(e)=>SearchTermMethod(e)"/>
 <div class="book-container">
 	<div class="book-list-view">
 		<div class="contact-list">
-				<ContactCard Contacts = "Contacts" />
+				<ContactCard Contacts = "Contacts" SearchTerm="@SearchTerm"  />
 			@if (_isCreatingContact == true)
 			{
 				<div class="modal-content">
@@ -40,8 +36,10 @@
 
 @code
 {	
-	public static string SearchTerm { get; set; } = "";
-
+	string SearchTerm;
+	public void SearchTermMethod(string passedText) {
+		SearchTerm = passedText;
+	}
 	private bool _isCreatingContact;
 	private string _name = "";
 	private string _lastName = "";
