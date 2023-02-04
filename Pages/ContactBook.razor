@@ -36,10 +36,7 @@
 
 @code
 {	
-	string SearchTerm;
-	public void SearchTermMethod(string passedText) {
-		SearchTerm = passedText;
-	}
+	public string SearchTerm = "";
 	private bool _isCreatingContact;
 	private string _name = "";
 	private string _lastName = "";
@@ -77,5 +74,9 @@
 		Contacts.Add(new Contact(_name, _lastName, _mail, _number));
 		_isCreatingContact = false;
 		OnInitialized();
+	}
+	
+	public void SearchTermMethod(string passedText) {
+		SearchTerm = passedText;
 	}
 }
