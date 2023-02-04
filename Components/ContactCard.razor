@@ -1,7 +1,5 @@
 @page "/contactcard";
 
-
-
 @foreach (var contact in Contacts)
 {
 	@if ((string.IsNullOrEmpty(SearchTerm) || contact.Name.Contains(SearchTerm) || contact.LastName.Contains(SearchTerm)))
@@ -64,6 +62,7 @@
 	{
 		_isEditingContact = true;
 	}
+
 
 	public void Update()
 	{
