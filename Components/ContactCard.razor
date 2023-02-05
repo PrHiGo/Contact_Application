@@ -35,7 +35,7 @@
 
 				</div>
 				<div class="icons">
-					<button @onclick="@Delete">
+					<button @onclick="() => RemoveContact(contact)">
 						<img src="images/remove-icon.png" alt="remove-icon" class="icon" />
 					</button>
 					<img src="images/favorite-icon.png" alt="favorites-icon" class="icon" />
@@ -71,14 +71,9 @@
 		StateHasChanged();
 	}
 
-	public void Delete()
+	public void RemoveContact( Contact contact)
 	{
-		foreach (var contact in Contacts)
-		{
-			Contacts.Remove(contact);
-			StateHasChanged();
-			break;
-		}
+		Contacts.Remove(contact);
 	}
 
 	[Parameter]
