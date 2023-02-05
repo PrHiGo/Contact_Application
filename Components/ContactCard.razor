@@ -30,19 +30,16 @@
 	@if (_isCreatingContact == true )
 			{
 				<div class="edit-modal"> 
-
 				<div class="modal-title">
-					<h4>Name: @Name<input /></h4>
-					<h4>Lastname: @LastName<input /></h4>
+					<p>Name: @Name<input /></p>
+					<p>Lastname: @LastName<input /></p>
 				</div>
 
 				<div class="contact-info">
-		<p>Mail: @Mail<input /></p>
-		<p>PhoneNumber:@Number<input /></p>
-
+					<p>Mail: @Mail<input /></p>
+					<p>PhoneNumber:@Number<input/></p>
 				</div>
-
-	</div>
+				</div>
 				<div class="icons">
 					<button @onclick="@Delete">
 						<img src="images/remove-icon.png" alt="remove-icon" class="icon" />
@@ -92,9 +89,7 @@
 		_isEditingContact = false;
 		StateHasChanged();
 		ReplaceContact();
-
 	}
-
 
 	public void Delete()
 	{
