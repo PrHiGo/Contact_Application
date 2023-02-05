@@ -1,7 +1,5 @@
 @page "/contactcard";
 
-
-
 @foreach (var contact in Contacts)
 {
 	@if ((string.IsNullOrEmpty(SearchTerm) || contact.Name.Contains(SearchTerm) || contact.LastName.Contains(SearchTerm)))
@@ -37,7 +35,7 @@
 
 				</div>
 				<div class="icons">
-					<button @onclick="@Delete">
+					<button @onclick="() => RemoveContact(contact)">
 						<img src="images/remove-icon.png" alt="remove-icon" class="icon" />
 					</button>
 					<img src="images/favorite-icon.png" alt="favorites-icon" class="icon" />
@@ -65,6 +63,7 @@
 		_isEditingContact = true;
 	}
 
+
 	public void Update()
 	{
 		@* ContactBook.Contacts.Add(new Contact(Name, LastName, Email, Number)); *@
@@ -72,14 +71,9 @@
 		StateHasChanged();
 	}
 
-	public void Delete()
+	public void RemoveContact( Contact contact)
 	{
-		foreach (var contact in Contacts)
-		{
-			Contacts.Remove(contact);
-			StateHasChanged();
-			break;
-		}
+		Contacts.Remove(contact);
 	}
 
 	[Parameter]
