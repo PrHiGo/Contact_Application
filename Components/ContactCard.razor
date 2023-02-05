@@ -11,9 +11,15 @@
 	@if (_isShowingContactInfo == true && selectedContact == contact.Name && selectedContact2 == contact.LastName)
 	{
 		<div class="modal">
+		<div class="buttons"> 
+			<button @onclick="() => _isCreatingContact = true ">
+				<img src="images/pencil-icon.png" alt="edit-icon" class="icon" />
+			</button>
+			<button class="close" @onclick="() => _isShowingContactInfo = false">&times;</button>
+		</div>
+
 	<div class="modal-content">
 		<div class="modal-title">
-			<button class="close" @onclick="() => _isShowingContactInfo = false">&times;</button>
 			<h4>@contact.Name @contact.LastName </h4>
 		</div>
 		<div class="contact-info">
@@ -21,19 +27,20 @@
 			<p></p>
 		</div>
 	</div>
-	<button @onclick="() => _isCreatingContact = true ">
-		<img src="images/pencil-icon.png" alt="edit-icon" class="icon" />
-	</button>
-	@if (_isCreatingContact == true)
+	@if (_isCreatingContact == true )
 			{
+				<div class="edit-modal"> 
+
 				<div class="modal-title">
-					<h4>@Name<input /></h4>
-					<h4>@LastName<input /></h4>
+					<h4>Name: @Name<input /></h4>
+					<h4>Lastname: @LastName<input /></h4>
 				</div>
 
 				<div class="contact-info">
-		<p>@Mail<input /></p>
-		<p>@Number<input /></p>
+		<p>Mail: @Mail<input /></p>
+		<p>PhoneNumber:@Number<input /></p>
+
+				</div>
 
 	</div>
 				<div class="icons">
@@ -41,7 +48,7 @@
 						<img src="images/remove-icon.png" alt="remove-icon" class="icon" />
 					</button>
 					<img src="images/favorite-icon.png" alt="favorites-icon" class="icon" />
-					<button @onclick="@Update">Save</button>
+					<button class ="save-btn" @onclick="@Update">Save</button>
 				</div>
 			}
 		</div>
