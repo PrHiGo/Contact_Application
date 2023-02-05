@@ -46,7 +46,7 @@
 						<img src="images/remove-icon.png" alt="remove-icon" class="icon" />
 					</button>
 					<img src="images/favorite-icon.png" alt="favorites-icon" class="icon" />
-					<button class ="save-btn" @onclick="() => EditContact(contact, contact.Name)">Save</button>
+					<button class ="save-btn" @onclick="Update">Save</button>
 				</div>
 			}
 		</div>
@@ -54,9 +54,15 @@
 }
 
 @code {
+	[Parameter]
+	public List<Contact> Contacts { get; set; } = new List<Contact>();
 
 	[Parameter]
 	public string? SearchTerm { get; set; }
+
+	[Parameter]
+	public Action AddContact { get; set; }
+
 	public bool _isEditingContact;
 	private bool _isCreatingContact;
 	public bool EnableDelete { get; set; }
@@ -68,35 +74,13 @@
 	public string Mail { get; set; } = "";
 	public int Number { get; set; }
 
-	//public void EditContact(string name, string lastName, string mail, int number)
-	//{
-	//	_isEditingContact = true;
-	
-	//	Contacts.Add(new Contact(name, lastName, mail, number)); 
-
-	//}
-
-	public void EditContact(Contact contact, string newName)
-	{
-		var index = Contacts.IndexOf(contact);
-		Contacts[index].Name = newName;
-		StateHasChanged();
-		_isEditingContact = false;
-	}
-
-
-	public void ReplaceContact()
-	{
-		//_isEditingContact = true;
-		Contacts.Add(new Contact(Name, LastName, Mail, Number));
-		//_isCreatingContact = false;
-	}
 
 	public void Update()
 	{
+		AddContact();
+		Delete();
 		_isEditingContact = false;
 		StateHasChanged();
-		ReplaceContact();
 	}
 
 	public void Delete()
@@ -110,8 +94,6 @@
 
 	}
 
-	[Parameter]
-	public List<Contact> Contacts { get; set; } = new List<Contact>();
 
 	private bool _isShowingContactInfo;
 	private string selectedContact { get; set; } = "";

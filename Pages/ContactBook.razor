@@ -5,7 +5,7 @@
 <div class="book-container">
 	<div class="book-list-view">
 		<div class="contact-list">
-				<ContactCard Contacts = "Contacts" SearchTerm="@SearchTerm"  />
+				<ContactCard Contacts = "Contacts" SearchTerm="@SearchTerm" UpdateContact ="UpdateContact(_name,_lastName,_mail,_number)"  />
 			@if (_isCreatingContact == true)
 			{
 				<div class="modal-content">
@@ -45,43 +45,14 @@
 	private int _number;
 
 
-	private List<Contact> _contacts;
-
-	public List<Contact> Contacts
+	public List<Contact> Contacts = new List<Contact>()
 	{
-		get => _contacts;
-		set
-		{
-			_contacts = value;
-			StateHasChanged();
-		}
-	}
-
-	protected override void OnInitialized()
-	{	
-		SortContacts();
-		base.OnInitialized();
-
-		_contacts = new List<Contact>()
-		{
-			new Contact("Kalle", "Persson", "kalle.persson@exempel.com", 0701231122),
-			new Contact("Anders", "Andersson", "anders.andersson@exempel.com", 0701231122),
-			new Contact("Stina", "Svensson", "stina.Svensson@exempel.com", 0701231122),
-			new Contact("Kaj", "Bergström", "kaj.bergström@exempel.com", 0701231122),
-			new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
-		};
-	}
-
-
-
-	//public List<Contact> Contacts = new List<Contact>()
-	//{
-	//	new Contact("Kalle", "Persson", "kalle.persson@exempel.com", 0701231122),
-	//	new Contact("Anders", "Andersson", "anders.andersson@exempel.com", 0701231122),
-	//	new Contact("Stina", "Svensson", "stina.Svensson@exempel.com", 0701231122),
-	//	new Contact("Kaj", "Bergström", "kaj.bergström@exempel.com", 0701231122),
-	//	new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
-	//};
+		new Contact("Kalle", "Persson", "kalle.persson@exempel.com", 0701231122),
+		new Contact("Anders", "Andersson", "anders.andersson@exempel.com", 0701231122),
+		new Contact("Stina", "Svensson", "stina.Svensson@exempel.com", 0701231122),
+		new Contact("Kaj", "Bergström", "kaj.bergström@exempel.com", 0701231122),
+		new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
+	};
 
 	private void SortContacts()
 	{
@@ -97,6 +68,12 @@
 	{
 		Contacts.Add(new Contact(_name, _lastName, _mail, _number));
 		_isCreatingContact = false;
+		OnInitialized();
+	}
+
+	public void UpdateContact(string name, string lastname, string mail, int number)
+	{
+		Contacts.Add(new Contact(_name,_lastName,_mail,_number));
 		OnInitialized();
 	}
 	
