@@ -45,24 +45,47 @@
 	private int _number;
 
 
-	public List<Contact> Contacts = new List<Contact>()
+	private List<Contact> _contacts;
+
+	public List<Contact> Contacts
 	{
-		new Contact("Kalle", "Persson", "kalle.persson@exempel.com", 0701231122),
-		new Contact("Anders", "Andersson", "anders.andersson@exempel.com", 0701231122),
-		new Contact("Stina", "Svensson", "stina.Svensson@exempel.com", 0701231122),
-		new Contact("Kaj", "Bergström", "kaj.bergström@exempel.com", 0701231122),
-		new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
-	};
+		get => _contacts;
+		set
+		{
+			_contacts = value;
+			StateHasChanged();
+		}
+	}
+
+	protected override void OnInitialized()
+	{	
+		SortContacts();
+		base.OnInitialized();
+
+		_contacts = new List<Contact>()
+		{
+			new Contact("Kalle", "Persson", "kalle.persson@exempel.com", 0701231122),
+			new Contact("Anders", "Andersson", "anders.andersson@exempel.com", 0701231122),
+			new Contact("Stina", "Svensson", "stina.Svensson@exempel.com", 0701231122),
+			new Contact("Kaj", "Bergström", "kaj.bergström@exempel.com", 0701231122),
+			new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
+		};
+	}
+
+
+
+	//public List<Contact> Contacts = new List<Contact>()
+	//{
+	//	new Contact("Kalle", "Persson", "kalle.persson@exempel.com", 0701231122),
+	//	new Contact("Anders", "Andersson", "anders.andersson@exempel.com", 0701231122),
+	//	new Contact("Stina", "Svensson", "stina.Svensson@exempel.com", 0701231122),
+	//	new Contact("Kaj", "Bergström", "kaj.bergström@exempel.com", 0701231122),
+	//	new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
+	//};
 
 	private void SortContacts()
 	{
 		Contacts = Contacts.OrderBy(x => x.Name).ToList();
-	}
-
-	protected override void OnInitialized()
-	{
-		SortContacts();
-		base.OnInitialized();
 	}
 
 	public void NewContact()

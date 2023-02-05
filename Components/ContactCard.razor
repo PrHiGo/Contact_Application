@@ -10,13 +10,13 @@
 	}
 	@if (_isShowingContactInfo == true && selectedContact == contact.Name && selectedContact2 == contact.LastName)
 	{
-				<div class="modal">
-				<div class="buttons"> 
-					<button @onclick="() => _isCreatingContact = true ">
-						<img src="images/pencil-icon.png" alt="edit-icon" class="icon" />
-					</button>
-					<button class="close" @onclick="() => _isShowingContactInfo = false">&times;</button>
-				</div>
+		<div class="modal">
+			<div class="buttons"> 
+				<button @onclick="() => _isEditingContact = true ">
+					<img src="images/pencil-icon.png" alt="edit-icon" class="icon" />
+				</button>
+				<button class="close" @onclick="() => { _isShowingContactInfo = false; _isEditingContact = false; }">&times;</button>
+			</div>
 
 			<div class="modal-content">
 				<div class="modal-title">
@@ -29,26 +29,27 @@
 			</div>
 			@if (_isEditingContact == true)
 			{
-							<div class="edit-modal"> 
-							<div class="modal-title">
-								<p>Name: @Name<input /></p>
-								<p>Lastname: @LastName<input /></p>
-							</div>
+				
+				<div class="edit-modal"> 
+					<div class="modal-title">
+						<p>Name: @Name<input /></p>
+						<p>Lastname: @LastName<input /></p>
+					</div>
 
-							<div class="contact-info">
-								<p>Mail: @Mail<input /></p>
-								<p>PhoneNumber:@Number<input/></p>
-							</div>
-							</div>
-							<div class="icons">
-								<button @onclick="@Delete">
-									<img src="images/remove-icon.png" alt="remove-icon" class="icon" />
-								</button>
-								<img src="images/favorite-icon.png" alt="favorites-icon" class="icon" />
-								<button class ="save-btn" @onclick="Update">Save</button>
-							</div>
-			}
+					<div class="contact-info">
+						<p>Mail: @Mail<input /></p>
+						<p>PhoneNumber:@Number<input/></p>
+					</div>
 				</div>
+				<div class="icons">
+					<button @onclick="@Delete">
+						<img src="images/remove-icon.png" alt="remove-icon" class="icon" />
+					</button>
+					<img src="images/favorite-icon.png" alt="favorites-icon" class="icon" />
+					<button class ="save-btn" @onclick="() => EditContact(contact, contact.Name)">Save</button>
+				</div>
+			}
+		</div>
 	}
 }
 
@@ -67,28 +68,36 @@
 	public string Mail { get; set; } = "";
 	public int Number { get; set; }
 
-	public void EditContact(string name, string lastName, string mail, int number)
-	{
-		_isEditingContact = true;
+	//public void EditContact(string name, string lastName, string mail, int number)
+	//{
+	//	_isEditingContact = true;
 	
-		@* Contacts.Add(new Contact(name, lastName, mail, number)); *@
+	//	Contacts.Add(new Contact(name, lastName, mail, number)); 
 
+	//}
+
+	public void EditContact(Contact contact, string newName)
+	{
+		var index = Contacts.IndexOf(contact);
+		Contacts[index].Name = newName;
+		StateHasChanged();
+		_isEditingContact = false;
 	}
+
 
 	public void ReplaceContact()
 	{
-		_isEditingContact = true;
+		//_isEditingContact = true;
 		Contacts.Add(new Contact(Name, LastName, Mail, Number));
-		_isCreatingContact = false;
+		//_isCreatingContact = false;
 	}
 
-		public void Update()
-		{
-			_isEditingContact = false;
-			StateHasChanged();
-			ReplaceContact();
-		
-		}
+	public void Update()
+	{
+		_isEditingContact = false;
+		StateHasChanged();
+		ReplaceContact();
+	}
 
 	public void Delete()
 	{
