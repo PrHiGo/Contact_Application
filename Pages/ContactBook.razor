@@ -18,7 +18,7 @@
 		<input placeholder ="Mail" @bind="_mail" />
 		<input placeholder="Number" @bind="_number"/>
     <div>
-			<button @onclick="() => { _isCreatingContact = false; }">Close</button>
+			<button @onclick="() => { _isCreatingContact = false; SetDefault();}">Close</button>
 			<button @onclick="AddContact">Add</button>
 		</div>
 	</div>
@@ -54,10 +54,19 @@
 	{
 		Contacts.Add(new Contact(_name, _lastName, _mail, _number));
 		_isCreatingContact = false;
+		SetDefault();
 		OnInitialized();
 	}
 
 	public void SearchTermMethod(string passedText) {
 		SearchTerm = passedText;
 	}
+
+    private void SetDefault()
+    {
+        _name = "";
+        _lastName = "";
+        _mail = "";
+        _number = 0;
+    }
 }
