@@ -13,8 +13,7 @@
 					<input placeholder="Lastname" @bind="_lastName"/>
 					<input placeholder ="Mail" @bind="_mail" />
 					<input placeholder="Number" @bind="_number"/>
-					<input class ="adress_input" placeholder="Adress" @bind="_adress" />
-					<div>
+                    <div>
 						<button @onclick="() => { _isCreatingContact = false; }">Close</button>
 						<button @onclick="AddContact">Add</button>
 					</div>
@@ -35,10 +34,9 @@
 	private string _lastName = "";
 	private string _mail = "";
 	private int _number;
-	private string _adress = "";
 
 
-	public List<Contact> Contacts = new List<Contact>()
+    public List<Contact> Contacts = new List<Contact>()
 	{
 		new Contact("Kalle", "Persson", "kalle.persson@exempel.com", 0701231122),
 		new Contact("Anders", "Andersson", "anders.andersson@exempel.com", 0701231122),
