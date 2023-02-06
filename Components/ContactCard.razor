@@ -78,14 +78,14 @@
 		Contacts = Contacts.OrderBy(x => x.Name).ToList();
 		_isEditingContact = false;
 		_isShowingContactInfo = false;
-		Delete();
+		RemoveContact();
 		OnInitialized();
 		if(Name == ""){
 			return;
 		}
 	}
-
-	public void Delete()
+	// Removes Contact from List
+	public void RemoveContact(Contact contact)
 	{
 		foreach (var contact in Contacts)
 		{
