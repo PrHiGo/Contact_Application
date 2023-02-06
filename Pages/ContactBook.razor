@@ -6,25 +6,23 @@
 	<div class="book-list-view">
 		<div class="contact-list">
 				<ContactCard Contacts = "Contacts" SearchTerm="@SearchTerm"  />
-			@if (_isCreatingContact == true)
-			{
-				<div class="modal-content">
-					<input placeholder="Name" @bind="_name"/>
-					<input placeholder="Lastname" @bind="_lastName"/>
-					<input placeholder ="Mail" @bind="_mail" />
-					<input placeholder="Number" @bind="_number"/>
-                    <div>
-						<button @onclick="() => { _isCreatingContact = false; }">Close</button>
-						<button @onclick="AddContact">Add</button>
-					</div>
-				</div>
-			}
-	
 		</div>
 	</div> 
 </div>
-
-<button @onclick="NewContact">New Contact</button>
+<button @onclick="() => _isCreatingContact = true">New Contact</button>
+@if (_isCreatingContact == true)
+{
+	<div class="modal-content">
+		<input placeholder="Name" @bind="_name"/>
+		<input placeholder="Lastname" @bind="_lastName"/>
+		<input placeholder ="Mail" @bind="_mail" />
+		<input placeholder="Number" @bind="_number"/>
+    <div>
+			<button @onclick="() => { _isCreatingContact = false; }">Close</button>
+			<button @onclick="AddContact">Add</button>
+		</div>
+	</div>
+}
 
 @code
 {	
@@ -45,16 +43,13 @@
 		new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
 	};
 
+	// Sorting the list
 	private void SortContacts()
 	{
 		Contacts = Contacts.OrderBy(x => x.Name).ToList();
 	}
 
-	public void NewContact()
-	{
-		_isCreatingContact = true;
-	}
-
+	// Adds new contact to list
 	public void AddContact()
 	{
 		Contacts.Add(new Contact(_name, _lastName, _mail, _number));
