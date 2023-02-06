@@ -32,13 +32,13 @@
 				
 				<div class="edit-modal"> 
 					<div class="modal-title">
-						<p>Name: @Name<input /></p>
-						<p>Lastname: @LastName<input /></p>
+						<p>Name: <input @bind="@Name" /></p>
+						<p>Lastname:<input @bind ="@LastName" /></p>
 					</div>
 
 					<div class="contact-info">
-						<p>Mail: @Mail<input /></p>
-						<p>PhoneNumber:@Number<input/></p>
+						<p>Mail: <input @bind="@Mail" /></p>
+						<p>PhoneNumber:<input @bind="@Number"/></p>
 					</div>
 				</div>
 				<div class="icons">
@@ -60,46 +60,47 @@
 	[Parameter]
 	public string? SearchTerm { get; set; }
 
-	[Parameter]
-	public Action AddContact { get; set; }
-
+	private bool _isShowingContactInfo;
+	private string selectedContact { get; set; } = "";
+	private string selectedContact2 { get; set; } = "";
 	public bool _isEditingContact;
 	private bool _isCreatingContact;
 	public bool EnableDelete { get; set; }
 
-	@* public bool UpdateContact { get; set; } *@
 
-	public string Name { get; set; } = "";
-	public string LastName { get; set; } = "";
-	public string Mail { get; set; } = "";
-	public int Number { get; set; }
+	public string Name = "";
+	public string LastName= "";
+	public string Mail = "";
+	public int Number;
 
-
+	// Updates the contact with new info
 	public void Update()
 	{
-		AddContact();
-		Delete();
+		Contacts.Add(new Contact(Name, LastName, Mail, Number));
+		Contacts = Contacts.OrderBy(x => x.Name).ToList();
 		_isEditingContact = false;
-		StateHasChanged();
+		_isShowingContactInfo = false;
+		Delete();
+		OnInitialized();
+		if(Name == ""){
+			return;
+		}
 	}
 
+	// Removes Contact from list
 	public void Delete()
-	{
+	{	
 		foreach (var contact in Contacts)
 		{
 			Contacts.Remove(contact);
 			StateHasChanged();
 			break;
 		}
-
+		_isEditingContact = false;
+		_isShowingContactInfo = false;
 	}
 
-
-	private bool _isShowingContactInfo;
-	private string selectedContact { get; set; } = "";
-	private string selectedContact2 { get; set; } = "";
-
-
+// Method is used to check if the name and last name is equal to selected one
 	private void setSelectedContact(string Name, string LastName)
 	{
 		_isShowingContactInfo = true;

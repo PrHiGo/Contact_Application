@@ -5,7 +5,7 @@
 <div class="book-container">
 	<div class="book-list-view">
 		<div class="contact-list">
-				<ContactCard Contacts = "Contacts" SearchTerm="@SearchTerm" UpdateContact ="UpdateContact(_name,_lastName,_mail,_number)"  />
+				<ContactCard Contacts = "Contacts" SearchTerm="@SearchTerm" />
 			@if (_isCreatingContact == true)
 			{
 				<div class="modal-content">
@@ -28,7 +28,6 @@
 					<button @onclick="AddContact">Add</button>
 				</div>
 			}
-	
 		</div>
 	</div> 
 </div>
@@ -71,12 +70,6 @@
 		OnInitialized();
 	}
 
-	public void UpdateContact(string name, string lastname, string mail, int number)
-	{
-		Contacts.Add(new Contact(_name,_lastName,_mail,_number));
-		OnInitialized();
-	}
-	
 	public void SearchTermMethod(string passedText) {
 		SearchTerm = passedText;
 	}
