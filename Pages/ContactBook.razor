@@ -5,29 +5,22 @@
 <div class="book-container">
 	<div class="book-list-view">
 		<div class="contact-list">
-				<ContactCard Contacts = "Contacts" SearchTerm="@SearchTerm" />
+				<ContactCard Contacts = "Contacts" SearchTerm="@SearchTerm"  />
 			@if (_isCreatingContact == true)
 			{
 				<div class="modal-content">
-					<div class="modal-title">
-						<button class="close" @onclick="() => _isCreatingContact = false">&times;</button>
-						<h4>
-							Name: <input @bind="_name" />
-						</h4>
-						<h4>
-							Lastname: <input @bind="_lastName" />
-						</h4>
+					<input placeholder="Name" @bind="_name"/>
+					<input placeholder="Lastname" @bind="_lastName"/>
+					<input placeholder ="Mail" @bind="_mail" />
+					<input placeholder="Number" @bind="_number"/>
+					<input class ="adress_input" placeholder="Adress" @bind="_adress" />
+					<div>
+						<button @onclick="() => { _isCreatingContact = false; }">Close</button>
+						<button @onclick="AddContact">Add</button>
 					</div>
-					<div class="contact-info">
-						<p>Mail: <input @bind="_mail" /></p>
-						<p>Number: <input @bind="_number" /></p>
-						<p>Vägvägen 2 <br> 432 39 Stad</p>
-					</div>
-
-					<button @onclick="() => { _isCreatingContact = false; }">Close</button>
-					<button @onclick="AddContact">Add</button>
 				</div>
 			}
+	
 		</div>
 	</div> 
 </div>
@@ -42,6 +35,7 @@
 	private string _lastName = "";
 	private string _mail = "";
 	private int _number;
+	private string _adress = "";
 
 
 	public List<Contact> Contacts = new List<Contact>()

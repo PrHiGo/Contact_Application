@@ -1,7 +1,5 @@
 @page "/contactcard";
 
-
-
 @foreach (var contact in Contacts)
 {
 	@if ((string.IsNullOrEmpty(SearchTerm) || contact.Name.Contains(SearchTerm) || contact.LastName.Contains(SearchTerm)))
@@ -42,7 +40,7 @@
 					</div>
 				</div>
 				<div class="icons">
-					<button @onclick="@Delete">
+					<button @onclick="() => RemoveContact(contact)">
 						<img src="images/remove-icon.png" alt="remove-icon" class="icon" />
 					</button>
 					<img src="images/favorite-icon.png" alt="favorites-icon" class="icon" />
@@ -68,10 +66,10 @@
 	public bool EnableDelete { get; set; }
 
 
-	public string Name = "";
-	public string LastName= "";
-	public string Mail = "";
-	public int Number;
+	public void EditContact(string name, string lastName, string mail, int number)
+	{
+		_isEditingContact = true;
+	}
 
 	// Updates the contact with new info
 	public void Update()
@@ -87,17 +85,14 @@
 		}
 	}
 
-	// Removes Contact from list
 	public void Delete()
-	{	
+	{
 		foreach (var contact in Contacts)
 		{
 			Contacts.Remove(contact);
 			StateHasChanged();
 			break;
 		}
-		_isEditingContact = false;
-		_isShowingContactInfo = false;
 	}
 
 // Method is used to check if the name and last name is equal to selected one
