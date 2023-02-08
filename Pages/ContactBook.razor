@@ -1,4 +1,5 @@
 ﻿@page "/";
+@using System.Xml.Serialization
 <PageTitle>Contact Application</PageTitle>
 
 <SearchBar SearchContact="(e)=>SearchTermMethod(e)"/>
@@ -43,11 +44,17 @@
 		new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
 	};
 
+    protected override void OnInitialized()
+    {
+        Contacts = SortContacts(Contacts);
+    }
+
 	// Sorting the list
-	private void SortContacts()
+	public List<Contact> SortContacts(List<Contact> contacts)
 	{
-		Contacts = Contacts.OrderBy(x => x.Name).ToList();
+		return contacts.OrderBy(x => x.Name).ToList();
 	}
+
 
 	// Adds new contact to list
 	public void AddContact()
