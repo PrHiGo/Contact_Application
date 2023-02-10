@@ -44,12 +44,10 @@
                     <button @onclick="() => RemoveContact(contact)">
                         <img src="images/remove-icon.png" alt="remove-icon" class="icon" />
                     </button>
-                    @if (_isFavourite == true)
-                    {
-                    <button @onclick="@AddToFavourite">
+                    <button @onclick="@AddToFavourite"> 
                     <img src="images/favorite-icon.png" alt="favorites-icon" class="icon" />
                     </button>
-                    }
+                    
                     <button class="save-btn" @onclick="() => Update(contact)">Save</button>
                 </div>
             }
@@ -134,7 +132,7 @@
 
 
         
-    public void AddToFavourite ()
+    public void AddToFavourite()
     {
         _isFavourite = true;
         Contacts.Add(new Favourite(Name, LastName, Mail, Number));
