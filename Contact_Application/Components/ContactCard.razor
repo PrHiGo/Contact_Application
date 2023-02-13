@@ -44,10 +44,7 @@
                     <button @onclick="() => RemoveContact(contact)">
                         <img src="images/remove-icon.png" alt="remove-icon" class="icon" />
                     </button>
-                    <button @onclick="@AddToFavourite"> 
-                    <img src="images/favorite-icon.png" alt="favorites-icon" class="icon" />
-                    </button>
-                    
+
                     <button class="save-btn" @onclick="() => Update(contact)">Save</button>
                 </div>
             }
@@ -58,9 +55,7 @@
 @code {
     [Parameter]
     public List<Contact> Contacts { get; set; } = new List<Contact>();
-    
-    [Parameter]
-    public List <Favourite> Favourites {get; set;} = new List<Favourite>();
+
 
     [Parameter]
     public string? SearchTerm { get; set; }
@@ -72,8 +67,6 @@
 
     private bool _isEditingContact;
     private bool _isShowingContactInfo;
-
-    private bool _isFavourite;
 
     public string selectedContact;
     public string selectedContact2;
@@ -129,14 +122,4 @@
         Mail = "";
         Number = 0;
     }
-
-
-        
-    public void AddToFavourite()
-    {
-        _isFavourite = true;
-        Contacts.Add(new Favourite(Name, LastName, Mail, Number));
-        StateHasChanged();
-    }
-
 }
