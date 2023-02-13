@@ -1,0 +1,25 @@
+﻿@inherits LayoutComponentBase
+
+<main>
+    <div class="header-section">
+        <span class="button-container">
+            <button @onclick="Toggle.OpenMenu">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </button>
+        </span>
+        @if (Toggle.isOpen)
+        {
+            <div class="navmenu-container">
+                <NavMenu />
+            </div>
+        }
+    </div>
+
+    <div class="book-container">
+	    @Body
+    </div>
+
+</main>
+

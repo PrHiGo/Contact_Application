@@ -1,0 +1,125 @@
+@page "/contactcard";
+@using System.Reflection.Metadata.Ecma335
+
+@foreach (var contact in Contacts)
+{
+    @if ((string.IsNullOrEmpty(SearchTerm) || contact.Name.Contains(SearchTerm) || contact.LastName.Contains(SearchTerm)))
+    {
+        <li @onclick="() => SetSelectedContact(contact.Name, contact.LastName)">@contact.Name @contact.LastName</li>
+    }
+    @if (_isShowingContactInfo == true && selectedContact == contact.Name && selectedContact2 == contact.LastName)
+    {
+        <div class="modal">
+            <div class="buttons">
+                <button @onclick="() => _isEditingContact = true ">
+                    <img src="images/pencil-icon.png" alt="edit-icon" class="icon" />
+                </button>
+                <button class="close" @onclick="() => { _isShowingContactInfo = false; _isEditingContact = false; DefaultValue(); }">&times;</button>
+            </div>
+
+            <div class="modal-content">
+                <div class="modal-title">
+                    <h4>@contact.Name @contact.LastName </h4>
+                </div>
+                <div class="contact-info">
+                    <p>@contact.Email</p>
+                    <p>@contact.Number</p>
+                </div>
+            </div>
+            @if (_isEditingContact == true)
+            {
+
+                <div class="edit-modal">
+                    <div class="modal-title">
+                        <p>Name: <input @bind="@Name" /></p>
+                        <p>Lastname:<input @bind="@LastName" /></p>
+                    </div>
+
+                    <div class="contact-info">
+                        <p>Mail: <input @bind="@Mail" /></p>
+                        <p>PhoneNumber:<input @bind="@Number" /></p>
+                    </div>
+                </div>
+                <div class="icons">
+                    <button @onclick="() => RemoveContact(contact)">
+                        <img src="images/remove-icon.png" alt="remove-icon" class="icon" />
+                    </button>
+
+                    <button class="save-btn" @onclick="() => Update(contact)">Save</button>
+                </div>
+            }
+        </div>
+    }
+}
+
+@code {
+    [Parameter]
+    public List<Contact> Contacts { get; set; } = new List<Contact>();
+
+
+    [Parameter]
+    public string? SearchTerm { get; set; }
+
+    public string Name = "";
+    public string LastName = "";
+    public string Mail = "";
+    public int Number = 0;
+
+    private bool _isEditingContact;
+    private bool _isShowingContactInfo;
+
+    public string selectedContact;
+    public string selectedContact2;
+
+
+    // Updates the contact with new info
+    public void Update(Contact contact)
+    {
+        if (Name == "")
+        {
+            Name = contact.Name;
+        }
+        if (LastName == "")
+        {
+            LastName = contact.LastName;
+        }
+        if (Mail == "")
+        {
+            Mail = contact.Email;
+        }
+        if (Number == 0)
+        {
+            Number = contact.Number;
+        }
+
+        Contacts.Add(new Contact(Name, LastName, Mail, Number));
+        Contacts = Contacts.OrderBy(x => x.Name).ToList();
+        RemoveContact(contact);
+        OnInitialized();
+        DefaultValue();
+        _isEditingContact = false;
+    }
+    // Removes Contact from List
+    public void RemoveContact(Contact contact)
+    {
+        Contacts.Remove(contact);
+        _isEditingContact = false;
+        DefaultValue();
+    }
+
+    // Method is used to check if the name and last name is equal to selected one
+    public void SetSelectedContact(string Name, string LastName)
+    {
+        _isShowingContactInfo = true;
+        selectedContact = Name;
+        selectedContact2 = LastName;
+    }
+    // Sets default value
+    private void DefaultValue()
+    {
+        Name = "";
+        LastName = "";
+        Mail = "";
+        Number = 0;
+    }
+}

@@ -1,0 +1,79 @@
+﻿@page "/";
+@using System.Xml.Serialization
+<PageTitle>Contact Application</PageTitle>
+
+<SearchBar SearchContact="(e)=>SearchTermMethod(e)"/>
+<div class="book-container">
+	<div class="book-list-view">
+		<div class="contact-list">
+				<ContactCard Contacts = "Contacts" SearchTerm="@SearchTerm"  />
+		</div>
+	</div> 
+</div>
+<button @onclick="() => _isCreatingContact = true">New Contact</button>
+@if (_isCreatingContact == true)
+{
+	<div class="modal-content">
+		<input placeholder="Name" @bind="_name"/>
+		<input placeholder="Lastname" @bind="_lastName"/>
+		<input placeholder ="Mail" @bind="_mail" />
+		<input placeholder="Number" @bind="_number"/>
+    <div>
+			<button @onclick="() => { _isCreatingContact = false; SetDefault();}">Close</button>
+			<button @onclick="AddContact">Add</button>
+		</div>
+	</div>
+}
+
+@code
+{	
+	public string SearchTerm = "";
+	private bool _isCreatingContact;
+	private string _name = "";
+	private string _lastName = "";
+	private string _mail = "";
+	private int _number;
+
+
+    public List<Contact> Contacts = new List<Contact>()
+	{
+		new Contact("Kalle", "Persson", "kalle.persson@exempel.com", 0701231122),
+		new Contact("Anders", "Andersson", "anders.andersson@exempel.com", 0701231122),
+		new Contact("Stina", "Svensson", "stina.Svensson@exempel.com", 0701231122),
+		new Contact("Kaj", "Bergström", "kaj.bergström@exempel.com", 0701231122),
+		new Contact("Maja", "Johansson", "Maja.Johansson@exempel.com", 0701231122),
+	};
+
+    protected override void OnInitialized()
+    {
+        Contacts = SortContacts(Contacts);
+    }
+
+	// Sorting the list
+	public List<Contact> SortContacts(List<Contact> contacts)
+	{
+		return contacts.OrderBy(x => x.Name).ToList();
+	}
+
+
+	// Adds new contact to list
+	public void AddContact()
+	{
+		Contacts.Add(new Contact(_name, _lastName, _mail, _number));
+		_isCreatingContact = false;
+		SetDefault();
+		OnInitialized();
+	}
+
+	public void SearchTermMethod(string passedText) {
+		SearchTerm = passedText;
+	}
+
+    private void SetDefault()
+    {
+        _name = "";
+        _lastName = "";
+        _mail = "";
+        _number = 0;
+    }
+}

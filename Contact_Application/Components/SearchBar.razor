@@ -1,0 +1,20 @@
+@page "/searchbar"
+
+<div class="search-bar">
+	<input type="text" @bind-value="SearchTerm" @oninput="InputChanged" placeholder="Search Contact..." />
+	<img src="images/search-icon.png" alt="search icon" />
+</div>
+
+
+@code
+{
+	public string SearchTerm = "";
+	
+	[Parameter] 
+	public EventCallback<string> SearchContact { get; set; }
+
+	public void InputChanged(ChangeEventArgs e)
+	{
+		SearchContact.InvokeAsync((string)e.Value);
+	}
+}
