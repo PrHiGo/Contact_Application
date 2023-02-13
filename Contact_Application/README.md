@@ -2,7 +2,7 @@
 
 A simple contact application created with Blazor.
 
-This application makes it easy to store your contacts in an contact book. It allows you to save new contacts, update or remove current contacts, and it’s also possible to create a list storing your favorite contacts.
+This application makes it easy to store your contacts in an contact book. It allows you to save new contacts, update or remove current contacts.
 
 ## Command to run application:
 
