@@ -1,8 +1,8 @@
 # Contact_Application
 
-A simple contact application created with Blazor.
+A simple contact application created with Blazor by Thomas Palmqvist & Josefin Enerlöv WIN 22 Göteborg
 
-This application makes it easy to store your contacts in an contact book. It allows you to save new contacts, update or remove current contacts, and it’s also possible to create a list storing your favorite contacts.
+This application makes it easy to store your contacts in an contact book. It allows you to save new contacts, update or remove current contacts.
 
 ## Command to run application:
 
